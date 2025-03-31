@@ -15,6 +15,7 @@ import ReturnablePackaging from 'pages/ReturnablePackaging';
 import OneReturnablePackaging from 'pages/OneReturnablePackaging';
 import AccountSuspended from 'pages/AccountSuspended';
 import RecoveryPassword from 'pages/RecoveryPassword';
+import CarLocation from 'pages/CarLocation';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -61,6 +62,12 @@ export const App = () => {
             }
           />
         </Route>
+        <Route
+          path="/car-location"
+          element={
+            <PrivateRoute redirectTo="/login" component={<CarLocation />} />
+          }
+        />
 
         <Route
           path="/bar-code"

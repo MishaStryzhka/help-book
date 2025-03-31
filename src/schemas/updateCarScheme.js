@@ -10,7 +10,9 @@ export const updateCarSchema = Yup.object({
       'Název musí obsahovat typ a číslo, například "CDV114"'
     )
     .required('Název je povinný'),
+  spz: Yup.string()
+    .required('Pole SPZ je povinné')
+    .matches(/^[A-Z0-9]{5,8}$/, 'Neplatný formát SPZ'),
   type: Yup.string().required('Typ je povinný'),
-  drivingStyle: Yup.string().required('Typ je povinný'),
-  comment: Yup.string(),
+  drivingStyle: Yup.string().required('Styl jízdy je povinný'),
 });

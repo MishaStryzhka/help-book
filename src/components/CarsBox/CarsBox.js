@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase/config';
 import { collection, onSnapshot } from 'firebase/firestore';
-import { Box, Text, Grid, Flex, Icon } from '@chakra-ui/react';
+import { Box, Text, Grid, Flex, Icon, IconButton } from '@chakra-ui/react';
 import { FaSnowflake, FaBox } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getColorDrivingStyle } from 'helpers/getColorDrivingStyle';
 import { GiHotSurface } from 'react-icons/gi';
 import { getSortCars } from 'helpers/getSortCars';
 import { MdVolumeOff } from 'react-icons/md';
 import { ChatIcon } from '@chakra-ui/icons';
+import { FaMapLocation } from 'react-icons/fa6';
+
 import colors from 'styles/colors';
 
 const CarsBox = ({ filters, isGridView }) => {
+  const navigate = useNavigate();
+
   const {
     search,
     typeCars,
@@ -103,10 +107,19 @@ const CarsBox = ({ filters, isGridView }) => {
               boxShadow="md"
               bg={getColorDrivingStyle(car.drivingStyle)}
             >
-              {/* Name */}
-              <Text fontWeight="bold" fontSize={14}>
-                {car.name}
-              </Text>
+              <Box display="flex" alignItems="center" gap={2}>
+                <IconButton
+                  icon={<FaMapLocation />}
+                  onClick={() => {}}
+                  aria-label="Open Filter Menu"
+                  position="relative"
+                />
+
+                {/* Name */}
+                <Text fontWeight="bold" fontSize={14}>
+                  {car.name}
+                </Text>
+              </Box>
 
               <Box display="flex" gap={1}>
                 {/* Перемикачі */}
@@ -163,10 +176,27 @@ const CarsBox = ({ filters, isGridView }) => {
               boxShadow="md"
               bg={getColorDrivingStyle(car.drivingStyle)}
             >
-              {/* Name */}
-              <Text fontWeight="bold" fontSize="lg">
-                {car.name}
-              </Text>
+              <Box display="flex" alignItems="center" gap={2}>
+                {car?.spz && (
+                  <IconButton
+                    minW={8}
+                    w={8}
+                    h={8}
+                    icon={<FaMapLocation size={20} />}
+                    onClick={e => {
+                      e.preventDefault();
+                      navigate(`/car-location?spz=${car.spz}`);
+                    }}
+                    aria-label="Open Filter Menu"
+                    position="relative"
+                  />
+                )}
+
+                {/* Name */}
+                <Text fontWeight="bold" fontSize="lg">
+                  {car.name}
+                </Text>
+              </Box>
 
               <Box display="flex" gap={1}>
                 {/* Перемикачі */}

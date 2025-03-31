@@ -49,6 +49,16 @@ export const Navigation = () => {
                 Čárový kód
               </NavLink>
             )}
+            {(user?.role === 'VIP' || user?.role === 'dev') && (
+              <NavLink
+                className={({ isActive }) =>
+                  `${css.link} ${isActive ? css.active : ''}`
+                }
+                to="/car-location"
+              >
+                Poloha vozidla
+              </NavLink>
+            )}
 
             <NavLink
               className={({ isActive }) =>
