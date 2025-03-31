@@ -47,6 +47,9 @@ const MobMenu = ({ isOpen, onClose }) => {
                 Čárový kód
               </NavLink>
             )}
+            <NavLink to="/car-location" onClick={onClose}>
+              Poloha vozidla
+            </NavLink>
             <NavLink to="/packagings" onClick={onClose}>
               Vratné obaly
             </NavLink>
