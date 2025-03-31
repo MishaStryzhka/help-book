@@ -26,6 +26,7 @@ const AddCarForm = ({ value, onSubmit }) => {
         hasSoundProofed: value?.hasSoundProofed || false,
         comment: value?.comment || '',
         drivingStyle: value?.drivingStyle || '',
+        spz: value?.spz || '',
       }}
       validationSchema={value?.name ? updateCarSchema : validationAddCarSchema}
       onSubmit={values => {
@@ -41,7 +42,7 @@ const AddCarForm = ({ value, onSubmit }) => {
               <Field
                 as={Input}
                 name="name"
-                placeholder="Například CDV114"
+                placeholder="FS27"
                 onChange={e =>
                   setFieldValue('name', e.target.value.toUpperCase())
                 }
@@ -49,6 +50,29 @@ const AddCarForm = ({ value, onSubmit }) => {
               />
               {touched.name && errors.name ? (
                 <Box color="red.500">{errors.name}</Box>
+              ) : null}
+            </FormControl>
+
+            {/* Pole "spz" */}
+            <FormControl
+              isInvalid={
+                value?.name && !value?.spz && touched.name && errors.name
+              }
+              isRequired
+            >
+              <FormLabel color={value?.name && !value?.spz && 'red'}>
+                Registrační značka:
+              </FormLabel>
+              <Field
+                as={Input}
+                name="spz"
+                placeholder="Například EL107DB"
+                onChange={e =>
+                  setFieldValue('spz', e.target.value.toUpperCase())
+                }
+              />
+              {touched.spz && errors.spz ? (
+                <Box color="red.500">{errors.spz}</Box>
               ) : null}
             </FormControl>
 
