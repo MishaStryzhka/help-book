@@ -35,7 +35,7 @@ function CarDamage() {
           src={
             carSPZ
               ? `https://predavak.online/damage.php?registacni_znacka=${carSPZ}`
-              : `https://predavak.online/damage.phpпо`
+              : `https://predavak.online/damage.php`
           }
           height="100%"
           width="100%"
