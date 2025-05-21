@@ -4,7 +4,6 @@ import { getCarById } from 'app';
 import { updateCarById } from 'app/cars/updateCarById/updateCarById';
 import AddCarForm from 'components/AddCarForm/AddCarForm';
 import CarComments from 'components/CarComments/CarComments';
-// import Loader from 'components/Loader/Loader';
 import ModalWrapper from 'components/Modals/Modal';
 import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
@@ -19,6 +18,7 @@ import MenuCarInfo from 'components/MenuCarInfo/MenuCarInfo';
 import { IoClose } from 'react-icons/io5';
 import colors from 'styles/colors';
 import { getColorDrivingStyle } from 'helpers/getColorDrivingStyle';
+import CarDamageButton from 'components/CarDamageButton/CarDamageButton';
 
 const MotionContainer = motion.create(Container);
 
@@ -168,14 +168,13 @@ const CarPage = () => {
           }}
         >
           <Flex alignItems="center" justify="space-between">
-            <IconButton
-              size={'sm'}
-              icon={<ArrowBackIcon />}
-              onClick={onClose}
-              aria-label="Zpět"
-            />
-            <Text>{car.name}</Text>
             <Flex gap={2}>
+              <IconButton
+                size={'sm'}
+                icon={<ArrowBackIcon />}
+                onClick={onClose}
+                aria-label="Zpět"
+              />
               <IconButton
                 ref={userMenuCarInfoButtonRef}
                 size={'sm'}
@@ -183,18 +182,26 @@ const CarPage = () => {
                 onClick={() => toggleMenuCarInfo()}
                 aria-label="Informace"
               />
-              <IconButton
-                size={'sm'}
-                icon={<EditIcon />}
-                onClick={() => setIsOpenModalEdit(true)}
-                aria-label="Upravit auto"
-              />
               {isOpenMenuCarInfo && (
                 <MenuCarInfo
                   ref={userMenuCarInfoRef}
                   onClose={() => setIsOpenMenuCarInfo(false)}
                 />
               )}
+            </Flex>
+
+            <Text>{car.name}</Text>
+            <Flex gap={2}>
+              <CarDamageButton
+                car={car}
+                setOpenModalEdit={() => setIsOpenModalEdit(true)}
+              />
+              <IconButton
+                size={'sm'}
+                icon={<EditIcon />}
+                onClick={() => setIsOpenModalEdit(true)}
+                aria-label="Upravit auto"
+              />
             </Flex>
           </Flex>
           <Flex direction="column" mt={2} h={'calc(100% - 40px)'}>

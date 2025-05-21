@@ -10,7 +10,7 @@ const MenuCarInfo = forwardRef(({ children, onClose, ...props }, ref) => {
     <Box
       position="absolute"
       top="40px"
-      right="0px"
+      left="0px"
       width="50%"
       bg="white"
       zIndex="overlay"
