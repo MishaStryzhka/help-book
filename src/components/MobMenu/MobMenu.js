@@ -56,6 +56,9 @@ const MobMenu = ({ isOpen, onClose }) => {
             <NavLink to="/packagings" onClick={onClose}>
               Vratné obaly
             </NavLink>
+            <NavLink to="/news" onClick={onClose}>
+              Zprávy
+            </NavLink>
             <NavLink to="/faq" onClick={onClose}>
               FAQ
             </NavLink>
