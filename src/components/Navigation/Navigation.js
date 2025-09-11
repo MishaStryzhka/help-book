@@ -72,6 +72,14 @@ export const Navigation = () => {
               className={({ isActive }) =>
                 `${css.link} ${isActive ? css.active : ''}`
               }
+              to="/news"
+            >
+              Zprávy
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                `${css.link} ${isActive ? css.active : ''}`
+              }
               to="/faq"
             >
               FAQ
