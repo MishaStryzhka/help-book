@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getColorDrivingStyle } from 'helpers/getColorDrivingStyle';
 import { GiHotSurface } from 'react-icons/gi';
 import { getSortCars } from 'helpers/getSortCars';
-import { MdVolumeOff } from 'react-icons/md';
+import { MdSensors, MdVolumeOff } from 'react-icons/md';
 import { ChatIcon } from '@chakra-ui/icons';
 import { FaMapLocation } from 'react-icons/fa6';
 
@@ -20,6 +20,7 @@ const CarsBox = ({ filters, isGridView }) => {
     search,
     typeCars,
     drivingStyle,
+    hasParkingSensors,
     hasAirConditioner,
     hasFridge,
     hasHeating,
@@ -44,6 +45,9 @@ const CarsBox = ({ filters, isGridView }) => {
         const matchesTypeDrivingStyle = drivingStyle
           ? car.drivingStyle === drivingStyle
           : true;
+        const matchesParkingSensors = hasParkingSensors
+          ? car.hasParkingSensors === true
+          : true;
         const matchesAirConditioner = hasAirConditioner
           ? car.hasAirConditioner === true
           : true;
@@ -55,6 +59,7 @@ const CarsBox = ({ filters, isGridView }) => {
         return (
           matchesSearch &&
           matchesType &&
+          matchesParkingSensors &&
           matchesAirConditioner &&
           matchesFridge &&
           matchesTypeDrivingStyle &&
@@ -70,6 +75,7 @@ const CarsBox = ({ filters, isGridView }) => {
   }, [
     typeCars,
     drivingStyle,
+    hasParkingSensors,
     hasAirConditioner,
     hasFridge,
     search,
@@ -123,6 +129,15 @@ const CarsBox = ({ filters, isGridView }) => {
 
               <Box display="flex" gap={1}>
                 {/* Перемикачі */}
+                {'hasParkingSensors' in car && (
+                  <Box display="flex" alignItems="center">
+                    <MdSensors
+                      size={20}
+                      color={car.hasParkingSensors ? 'green' : 'red'}
+                    />
+                  </Box>
+                )}
+
                 <Box display="flex" alignItems="center">
                   <FaSnowflake
                     color={car.hasAirConditioner ? 'green' : 'red'}
@@ -200,6 +215,15 @@ const CarsBox = ({ filters, isGridView }) => {
 
               <Box display="flex" gap={1}>
                 {/* Перемикачі */}
+                {'hasParkingSensors' in car && (
+                  <Box display="flex" alignItems="center">
+                    <MdSensors
+                      size={20}
+                      color={car.hasParkingSensors ? 'green' : 'red'}
+                    />
+                  </Box>
+                )}
+
                 <Box display="flex" alignItems="center">
                   <FaSnowflake
                     color={car.hasAirConditioner ? 'green' : 'red'}

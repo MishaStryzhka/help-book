@@ -22,6 +22,8 @@ const FilterMobMenu = ({
   setTypeCars,
   drivingStyle,
   setDrivingStyle,
+  hasParkingSensors,
+  setHasParkingSensors,
   hasAirConditioner,
   setHasAirConditioner,
   hasFridge,
@@ -209,6 +211,18 @@ const FilterMobMenu = ({
               </MenuItem>
             </MenuList>
           </Menu>
+
+          {/* Přepínač pro "Parkovací senzory" */}
+          <Checkbox
+            name="hasParkingSensors"
+            isChecked={hasParkingSensors}
+            onChange={() => {
+              setHasParkingSensors(prev => !prev);
+            }}
+          >
+            Parkovací senzory
+          </Checkbox>
+
           {/* Перемикач для кондиціонера */}
           <Checkbox
             name="hasAirConditioner"
@@ -219,6 +233,7 @@ const FilterMobMenu = ({
           >
             Klimatizace
           </Checkbox>
+
           {/* Перемикач для Topení: */}
           <Checkbox
             name="hasHeating"

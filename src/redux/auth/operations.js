@@ -75,7 +75,6 @@ export const logIn = createAsyncThunk(
       querySnapshot.forEach(doc => {
         userDate = doc.data();
       });
-      console.log('userDate', userDate);
 
       if (!userDate?.email) {
         // Якщо у даних користувача немає email
@@ -91,7 +90,6 @@ export const logIn = createAsyncThunk(
           userDate.email,
           password
         );
-        console.log('userCredential', userCredential);
         const { accessToken, uid } = userCredential.user;
 
         // Повернення успішного результату
