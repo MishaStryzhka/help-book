@@ -96,6 +96,20 @@ const AddCarForm = ({ value, onSubmit }) => {
               ) : null}
             </FormControl>
 
+            {/* Přepínač pro "Parkovací senzory" */}
+            <FormControl display="flex" alignItems="center">
+              <FormLabel mb="0">Parkovací senzory</FormLabel>
+              <Field
+                as={Switch}
+                name="hasParkingSensors"
+                colorScheme="green"
+                isChecked={values.hasParkingSensors}
+                onChange={() =>
+                  setFieldValue('hasParkingSensors', !values.hasParkingSensors)
+                }
+              />
+            </FormControl>
+
             {/* Přepínač pro "Klimatizace" */}
             <FormControl display="flex" alignItems="center">
               <FormLabel mb="0">Klimatizace</FormLabel>

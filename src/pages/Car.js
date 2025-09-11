@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBox, FaSnowflake } from 'react-icons/fa';
 import { useNavigate, useParams } from 'react-router-dom';
-import { MdVolumeOff } from 'react-icons/md';
+import { MdSensors, MdVolumeOff } from 'react-icons/md';
 import { GiCheckMark, GiHotSurface } from 'react-icons/gi';
 import { motion } from 'framer-motion';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -206,6 +206,24 @@ const CarPage = () => {
           </Flex>
           <Flex direction="column" mt={2} h={'calc(100% - 40px)'}>
             <Flex justify={'space-around'} align={'center'}>
+              <Flex flexDirection="column">
+                <Flex align="center">
+                  <Icon
+                    as={MdSensors}
+                    // size={1500}
+                    boxSize={8}
+                    mr={1}
+                    color={
+                      'hasParkingSensors' in car
+                        ? car.hasParkingSensors
+                          ? 'green'
+                          : colors.danger
+                        : colors.textSecondary
+                    }
+                  />
+                  {getResultIcon(car, 'hasParkingSensors')}
+                </Flex>
+              </Flex>
               <Flex flexDirection="column">
                 <Flex align="center">
                   <Icon

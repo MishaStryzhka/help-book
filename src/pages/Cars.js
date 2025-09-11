@@ -16,6 +16,7 @@ const Cars = () => {
   const [isOpenModalScan, setIsOpenModalScan] = useState(false);
   const [search, setSearch] = useState('');
   const [typeCars, setTypeCars] = useState('');
+  const [hasParkingSensors, setHasParkingSensors] = useState(false);
   const [hasAirConditioner, setHasAirConditioner] = useState(false);
   const [hasFridge, setHasFridge] = useState(false);
   const [drivingStyle, setDrivingStyle] = useState('');
@@ -52,6 +53,8 @@ const Cars = () => {
           setTypeCars={setTypeCars}
           drivingStyle={drivingStyle}
           setDrivingStyle={setDrivingStyle}
+          hasParkingSensors={hasParkingSensors}
+          setHasParkingSensors={setHasParkingSensors}
           hasAirConditioner={hasAirConditioner}
           setHasAirConditioner={setHasAirConditioner}
           hasFridge={hasFridge}
@@ -70,6 +73,8 @@ const Cars = () => {
           setTypeCars={setTypeCars}
           drivingStyle={drivingStyle}
           setDrivingStyle={setDrivingStyle}
+          hasParkingSensors={hasParkingSensors}
+          setHasParkingSensors={setHasParkingSensors}
           hasAirConditioner={hasAirConditioner}
           setHasAirConditioner={setHasAirConditioner}
           hasFridge={hasFridge}
@@ -89,6 +94,7 @@ const Cars = () => {
             search,
             typeCars,
             drivingStyle,
+            hasParkingSensors,
             hasAirConditioner,
             hasHeating,
             hasFridge,

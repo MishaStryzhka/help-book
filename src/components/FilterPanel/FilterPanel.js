@@ -19,7 +19,7 @@ import { ChevronDownIcon, AddIcon } from '@chakra-ui/icons';
 import { FaSnowflake, FaBox, FaFilter, FaChevronUp } from 'react-icons/fa';
 import ListViewSwitcher from 'components/ListViewSwitcher/ListViewSwitcher';
 import { GiHotSurface } from 'react-icons/gi';
-import { MdVolumeOff } from 'react-icons/md';
+import { MdSensors, MdVolumeOff } from 'react-icons/md';
 import { IoScan } from 'react-icons/io5';
 import { TYPES_CAR } from 'data';
 
@@ -30,6 +30,8 @@ const FilterPanel = ({
   setSearch,
   typeCars,
   setTypeCars,
+  hasParkingSensors,
+  setHasParkingSensors,
   hasAirConditioner,
   setHasAirConditioner,
   hasFridge,
@@ -113,6 +115,22 @@ const FilterPanel = ({
               ))}
             </MenuList>
           </Menu>
+
+          {/* Přepínač pro "Parkovací senzory" */}
+          <Flex align="center">
+            <Icon
+              as={MdSensors}
+              boxSize={5}
+              mr={2}
+              color={hasParkingSensors ? 'green.500' : 'gray.500'}
+            />
+            <Switch
+              colorScheme="green"
+              isChecked={hasParkingSensors}
+              onChange={() => setHasParkingSensors(!hasParkingSensors)}
+            />
+          </Flex>
+
           {/* Перемикач для кондиціонера */}
           <Flex align="center">
             <Icon
@@ -127,6 +145,7 @@ const FilterPanel = ({
               onChange={() => setHasAirConditioner(!hasAirConditioner)}
             />
           </Flex>
+
           {/* Перемикач для Topení */}
           <Flex align="center">
             <Icon
