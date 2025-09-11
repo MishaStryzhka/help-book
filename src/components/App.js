@@ -17,6 +17,8 @@ import AccountSuspended from 'pages/AccountSuspended';
 import RecoveryPassword from 'pages/RecoveryPassword';
 import CarLocation from 'pages/CarLocation';
 import CarDamage from 'pages/CarDamage';
+import News from 'pages/News';
+import NewsDetail from 'pages/NewsDetail';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -80,6 +82,19 @@ export const App = () => {
           path="/bar-code"
           element={<PrivateRoute redirectTo="/login" component={<BarCode />} />}
         />
+
+        <Route
+          path="/news"
+          element={<PrivateRoute redirectTo="/login" component={<News />} />}
+        >
+          <Route
+            path="/news/:id"
+            element={
+              <PrivateRoute redirectTo="/login" component={<NewsDetail />} />
+            }
+          />
+        </Route>
+
         <Route
           path="/packagings"
           element={
